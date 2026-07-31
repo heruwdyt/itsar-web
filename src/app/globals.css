@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Montserrat:wght@600;700;800;900&family=Outfit:wght@600;700;800;900&family=Poppins:wght@700;800;900&display=swap');
+@import 'tailwindcss';
+
+/* ─── Brand Design Tokens ─── */
+:root {
+  --color-itsar-gold:       #c9922a;
+  --color-itsar-gold-hover: #b07d20;
+  --color-itsar-gold-light: #fef3e2;
+  --color-itsar-navy:       #1a2e4a;
+  --color-itsar-navy-light: #243d60;
+  --color-muted-fg:         #64748B;
+  --color-border:           #E2E8F0;
+  --shadow-gold:            0 4px 24px rgba(201, 146, 42, 0.25);
+  --shadow-card:            0 1px 4px rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.04);
+  --shadow-card-hover:      0 12px 24px rgba(0,0,0,0.12);
+  --motion-fast:            150ms;
+  --motion-base:            250ms;
+  --motion-slow:            350ms;
+  --ease-out:               cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ─── Base Reset ─── */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: 'IBM Plex Sans', system-ui, sans-serif;
+  color: var(--color-itsar-navy);
+  background-color: #ffffff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.6;
+}
+
+/* ─── UX: cursor-pointer + focus-visible ─── */
+a, button, [role="button"] { cursor: pointer; }
+:focus-visible { outline: 2px solid var(--color-itsar-gold); outline-offset: 2px; border-radius: 4px; }
+
+/* ─── Typography ─── */
+.font-display { font-family: 'Poppins', system-ui, sans-serif; }
+.font-geometric { font-family: 'Montserrat', 'Outfit', 'Century Gothic', 'Futura', 'Geometric Sans-Serif', sans-serif; }
+
+/* ─── Section Badge (Tanpa Garis ---) ─── */
+.section-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.85rem;
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-itsar-gold);
+  font-family: 'Montserrat', 'Outfit', 'Century Gothic', 'Futura', 'Geometric Sans-Serif', sans-serif;
+}
+
+/* ─── Buttons ─── */
+.btn-gold {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--color-itsar-gold);
+  color: #fff;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 0.8125rem 1.625rem;
+  border-radius: 0.5rem;
+  transition: background var(--motion-base), transform var(--motion-fast), box-shadow var(--motion-base);
+  box-shadow: var(--shadow-gold);
+  text-decoration: none;
+  border: none;
+}
+.btn-gold:hover { background: var(--color-itsar-gold-hover); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(201,146,42,0.4); }
+.btn-gold:active { transform: translateY(0); }
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 2px solid #d1d5db;
+  color: #374151;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 0.8125rem 1.625rem;
+  border-radius: 0.5rem;
+  transition: border-color var(--motion-base), color var(--motion-base), background var(--motion-base);
+  text-decoration: none;
+  background: transparent;
+}
+.btn-outline:hover { border-color: var(--color-itsar-gold); color: var(--color-itsar-gold); background: var(--color-itsar-gold-light); }
+
+/* ─── Card hover (UI UX Pro Max: Standard tier) ─── */
+.card-hover {
+  transition: transform var(--motion-base) var(--ease-out), box-shadow var(--motion-base) var(--ease-out), border-color var(--motion-base);
+}
+.card-hover:hover { transform: translateY(-4px) scale(1.01); box-shadow: var(--shadow-card-hover); }
+
+/* ─── prefers-reduced-motion ─── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
